@@ -43,5 +43,26 @@ httpRequest.onreadystatechange = () => {
         cardButton.setAttribute("type", "button")
         cardButton.classList.add("btn", "btn-md", "bg-secondary", "text-light", "my-3", "ml-auto")
 
+        let button = document.querySelector(".btn")
+        button.addEventListener("click", () => {
+            let lens = document.querySelector(".form-control").value
+            let product = {
+                nomProduit: response.name, 
+                prixProduit : response.price / 10000,
+                lentilleProduit : lens,
+                idProduit : response._id,
+            }
+            
+            let productInStorage = JSON.parse(localStorage.getItem("product"));
+
+            if (productInStorage) {
+                productInStorage.push(product)
+                localStorage.setItem("product", JSON.stringify(productInStorage))
+            } else {
+                productInStorage = []
+                productInStorage.push(product)
+                localStorage.setItem("product", JSON.stringify(productInStorage))
+            }
+        })
     }
 }
