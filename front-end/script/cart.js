@@ -3,6 +3,7 @@ let productinStorage = JSON.parse(localStorage.getItem("product"))
 let cartDiv = document.querySelector(".cart")
 let cart = 0
 
+
 for (let i = 0; i < productinStorage.length; i++) {
     productTitle = cartDiv.appendChild(document.createElement("h1"))
     productTitle.innerHTML = productinStorage[i].nomProduit
