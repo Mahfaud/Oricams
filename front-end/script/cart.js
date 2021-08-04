@@ -12,21 +12,37 @@ let smallBaliseEmail = document.createElement("small")
 let allSmallBalise = document.getElementsByTagName("small")
 
 
-for (let i = 0; i < productinStorage.length; i++) {
-    let productDiv = cartDiv.appendChild(document.createElement("div"))
-    productDiv.classList.add("row", "justify-content-around")
-    let productTitle = productDiv.appendChild(document.createElement("h3"))
-    productTitle.innerHTML = productinStorage[i].nomProduit
-    let productLens = productDiv.appendChild(document.createElement("p"))
-    productLens.innerHTML = productinStorage[i].lentilleProduit
-    let productPrice = productDiv.appendChild(document.createElement("p"))
-    productPrice.innerHTML = productinStorage[i].prixProduit + "€"
-    cart += Number(productinStorage[i].prixProduit)
+if (productinStorage) {
+    for (let i = 0; i < productinStorage.length; i++) {
+        let productDiv = cartDiv.appendChild(document.createElement("div"))
+        productDiv.classList.add("row", "justify-content-around", "cartLine")
+        let productTitle = productDiv.appendChild(document.createElement("h3"))
+        productTitle.innerHTML = productinStorage[i].nomProduit
+        let productLens = productDiv.appendChild(document.createElement("p"))
+        productLens.innerHTML = productinStorage[i].lentilleProduit
+        let productPrice = productDiv.appendChild(document.createElement("p"))
+        productPrice.innerHTML = productinStorage[i].prixProduit + "€"
+        cart += Number(productinStorage[i].prixProduit)
+    }
 }
 
+let allCartLine = document.querySelectorAll(".cartLine")
 
-cartTotal = cartDiv.appendChild(document.createElement("h2"))
-cartTotal.innerHTML = "Panier total : " + cart + "€"
+let cartTotal = cartDiv.appendChild(document.createElement("h2"))
+cartTotal.classList.add("cartTotal")
+cartTotal.innerHTML = "Panier total : " + Math.round(cart*100)/100 + "€"
+
+let emptyButton = cartDiv.appendChild(document.createElement("button"))
+emptyButton.classList.add("btn" , "btn-danger" , "mx-auto")
+emptyButton.innerHTML = "Vider votre panier"
+
+emptyButton.addEventListener("click", () => {
+    localStorage.clear()
+    for (let i = allCartLine.length ; i-- > 0;) {
+        allCartLine[i].parentNode.removeChild(allCartLine[i])
+        cartTotal.innerHTML = "Panier total : 0€"
+    }
+})
 
 
 button.addEventListener("click", (e) => {

@@ -42,7 +42,15 @@ let oneCamera = async () => {
                 let options = productLenses.appendChild(document.createElement("option"))
                 options.innerHTML = data.lenses[i]
             }
-    
+            
+            // Création d'une liste pour les quantités de caméras
+            let productQuantity = cardBody.appendChild(document.createElement("select"))
+            productQuantity.classList.add("productQuantity")
+            for (let i = 1; i < 5; i++) {
+                let options = productQuantity.appendChild(document.createElement("option"))
+                options.innerHTML = i
+            }
+
             // Création d'un bouton dans le corps de la card et lui ajoute des classes Bootstrap et des attributs
             cardButton = cardBody.appendChild(document.createElement("button"))
             cardButton.innerHTML = "Ajouter au panier"
@@ -53,12 +61,15 @@ let oneCamera = async () => {
             // Ajoute le produit dans le localStorage losqu'on clique sur le bouton
             button.addEventListener("click", () => {
                 let lens = document.querySelector(".form-control").value
+                let quantity = Number(document.querySelector(".productQuantity").value)
                 // Crée un objet product avec les choix de l'utilisateur
                 let product = {
                     nomProduit: data.name, 
                     prixProduit : data.price / 10000,
                     lentilleProduit : lens,
                     idProduit : data._id,
+                    quantiteProduit: quantity
+                    
                 }
                 
                 // Parse le contenu de la clé "product" dans le localStorage et le met dans une variable
