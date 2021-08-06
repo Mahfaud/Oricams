@@ -46,6 +46,7 @@ emptyButton.addEventListener("click", () => {
 
 
 button.addEventListener("click", (e) => {
+    e.preventDefault()
     for (let i = allSmallBalise.length ; i-- > 0;) {
         allSmallBalise[i].parentNode.removeChild(allSmallBalise[i])
     }
@@ -92,6 +93,8 @@ button.addEventListener("click", (e) => {
             },
             products: JSON.parse(localStorage.getItem("product"))
         };
+
+        fetch()
 
         console.log(JSON.stringify(order))
     } else {

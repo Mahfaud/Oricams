@@ -77,8 +77,22 @@ let oneCamera = async () => {
                 
                 // Si productInStorage n'est pas égal à null alors on push le produit créé dans l'array et on renvoie le JSON modifié dans le localStorage
                 if (productInStorage) {
-                    productInStorage.push(product)
-                    localStorage.setItem("product", JSON.stringify(productInStorage))
+                    let sameProduct = false
+                    for (let i = 0; i < productInStorage.length; i++) {
+                        if (productInStorage[i].nomProduit == product.nomProduit && productInStorage[i].lentilleProduit == product.lentilleProduit) {
+                            console.log("Same")
+                            productInStorage[i].quantiteProduit += Number(product.quantiteProduit)
+                            localStorage.setItem("product", JSON.stringify(productInStorage))
+                            sameProduct = true
+                            break
+                        }
+                    }
+                    // Si le produit n'est pas le même après la boucle, ajoute le produit dans le localStorage
+                    if (!sameProduct) {
+                        console.log("Not same")
+                        productInStorage.push(product)
+                        localStorage.setItem("product", JSON.stringify(productInStorage))
+                    }  
                 // Si productInStorage est égal à null alors on crée une array ou l'on va push le produit créé puis on renvoie le JSON dans le localStorage
                 } else {
                     productInStorage = []
