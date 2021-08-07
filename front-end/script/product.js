@@ -73,7 +73,7 @@ let oneCamera = async () => {
                 }
                 
                 // Parse le contenu de la clé "product" dans le localStorage et le met dans une variable
-                let productInStorage = JSON.parse(localStorage.getItem("product"));
+                let productInStorage = JSON.parse(localStorage.getItem("products"));
                 
                 // Si productInStorage n'est pas égal à null alors on push le produit créé dans l'array et on renvoie le JSON modifié dans le localStorage
                 if (productInStorage) {
@@ -82,7 +82,7 @@ let oneCamera = async () => {
                         if (productInStorage[i].name == product.name && productInStorage[i].lens == product.lens) {
                             console.log("Same")
                             productInStorage[i].quantity += Number(product.quantity)
-                            localStorage.setItem("product", JSON.stringify(productInStorage))
+                            localStorage.setItem("products", JSON.stringify(productInStorage))
                             sameProduct = true
                             break
                         }
@@ -91,13 +91,13 @@ let oneCamera = async () => {
                     if (!sameProduct) {
                         console.log("Not same")
                         productInStorage.push(product)
-                        localStorage.setItem("product", JSON.stringify(productInStorage))
+                        localStorage.setItem("products", JSON.stringify(productInStorage))
                     }  
                 // Si productInStorage est égal à null alors on crée une array ou l'on va push le produit créé puis on renvoie le JSON dans le localStorage
                 } else {
                     productInStorage = []
                     productInStorage.push(product)
-                    localStorage.setItem("product", JSON.stringify(productInStorage))
+                    localStorage.setItem("products", JSON.stringify(productInStorage))
                 }
             })
         } else {

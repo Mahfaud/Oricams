@@ -1,4 +1,4 @@
-let productinStorage = JSON.parse(localStorage.getItem("product"))
+let productinStorage = JSON.parse(localStorage.getItem("products"))
 let button = document.getElementById("confirmButton")
 let form = document.getElementById("formClient")
 let cartDiv = document.querySelector(".cart")
@@ -10,6 +10,17 @@ let smallBaliseAddress = document.createElement("small")
 let smallBaliseCity = document.createElement("small")
 let smallBaliseEmail = document.createElement("small")
 let allSmallBalise = document.getElementsByTagName("small")
+
+let productsId = []
+for (idInLocalStorage of productinStorage) {
+    if (idInLocalStorage.quantity > 1) {
+        for (let i = 0; i < idInLocalStorage.quantity; i++) {
+            productsId.push(idInLocalStorage._id)
+        }
+    } else {
+        productsId.push(idInLocalStorage._id)
+    }
+}
 
 
 if (productinStorage) {
@@ -90,7 +101,7 @@ button.addEventListener("click", (e) => {
                 city: form.city.value,
                 email: form.email.value
             },
-            products: JSON.parse(localStorage.getItem("product"))
+            products: productsId
         }
 
         let headers = {
