@@ -10,20 +10,21 @@ let smallBaliseAddress = document.createElement("small")
 let smallBaliseCity = document.createElement("small")
 let smallBaliseEmail = document.createElement("small")
 let allSmallBalise = document.getElementsByTagName("small")
-
 let productsId = []
-for (idInLocalStorage of productinStorage) {
-    if (idInLocalStorage.quantity > 1) {
-        for (let i = 0; i < idInLocalStorage.quantity; i++) {
-            productsId.push(idInLocalStorage._id)
-        }
-    } else {
-        productsId.push(idInLocalStorage._id)
-    }
-}
-
 
 if (productinStorage) {
+
+    if (productinStorage)
+    for (idInLocalStorage of productinStorage) {
+        if (idInLocalStorage.quantity > 1) {
+            for (let i = 0; i < idInLocalStorage.quantity; i++) {
+                productsId.push(idInLocalStorage._id)
+        }
+        } else {
+            productsId.push(idInLocalStorage._id)
+        }
+    }
+
     for (let i = 0; i < productinStorage.length; i++) {
         let productDiv = cartDiv.appendChild(document.createElement("div"))
         productDiv.classList.add("row", "justify-content-around", "cartLine")
