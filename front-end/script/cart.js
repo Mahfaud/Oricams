@@ -17,12 +17,12 @@ if (productinStorage) {
         let productDiv = cartDiv.appendChild(document.createElement("div"))
         productDiv.classList.add("row", "justify-content-around", "cartLine")
         let productTitle = productDiv.appendChild(document.createElement("h3"))
-        productTitle.innerHTML = productinStorage[i].nomProduit
+        productTitle.innerHTML = productinStorage[i].name
         let productLens = productDiv.appendChild(document.createElement("p"))
-        productLens.innerHTML = productinStorage[i].lentilleProduit
+        productLens.innerHTML = productinStorage[i].lens
         let productPrice = productDiv.appendChild(document.createElement("p"))
-        productPrice.innerHTML = productinStorage[i].prixProduit + "€"
-        cart += Number(productinStorage[i].prixProduit)
+        productPrice.innerHTML = productinStorage[i].price + "€"
+        cart += Number(productinStorage[i].price)
     }
 }
 
@@ -82,7 +82,6 @@ button.addEventListener("click", (e) => {
         dangerEmail.classList.add("form-text" , "text-danger")
     }
     if (confirmForm) {
-        e.preventDefault()
         let order = {
             contact: {
                 firstName: form.firstName.value,
@@ -92,12 +91,17 @@ button.addEventListener("click", (e) => {
                 email: form.email.value
             },
             products: JSON.parse(localStorage.getItem("product"))
-        };
+        }
 
-        fetch()
+        let headers = {
+            method: "POST",
+            body: JSON.stringify(order),
+            headers: {"Content-Type" : "application/json"}
+        }
 
-        console.log(JSON.stringify(order))
+        fetch("http://localhost:3000/api/cameras/order", headers)
     } else {
         e.preventDefault()
     }
     })
+

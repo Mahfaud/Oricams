@@ -64,11 +64,11 @@ let oneCamera = async () => {
                 let quantity = Number(document.querySelector(".productQuantity").value)
                 // Crée un objet product avec les choix de l'utilisateur
                 let product = {
-                    nomProduit: data.name, 
-                    prixProduit : data.price / 10000,
-                    lentilleProduit : lens,
-                    idProduit : data._id,
-                    quantiteProduit: quantity
+                    name: data.name, 
+                    price : data.price / 10000,
+                    lens : lens,
+                    _id : data._id,
+                    quantity: quantity
                     
                 }
                 
@@ -79,9 +79,9 @@ let oneCamera = async () => {
                 if (productInStorage) {
                     let sameProduct = false
                     for (let i = 0; i < productInStorage.length; i++) {
-                        if (productInStorage[i].nomProduit == product.nomProduit && productInStorage[i].lentilleProduit == product.lentilleProduit) {
+                        if (productInStorage[i].name == product.name && productInStorage[i].lens == product.lens) {
                             console.log("Same")
-                            productInStorage[i].quantiteProduit += Number(product.quantiteProduit)
+                            productInStorage[i].quantity += Number(product.quantity)
                             localStorage.setItem("product", JSON.stringify(productInStorage))
                             sameProduct = true
                             break
