@@ -111,10 +111,10 @@ let oneCamera = async () => {
                 }
             })
         } else {
-            console.log("Erreur" + response.status) 
+            document.body.innerHTML = response.status
         }
     } catch {
-        console.log("Erreur")
+        document.body.innerHTML = "Le serveur ne répond pas"
     }
 }
 
