@@ -1,0 +1,27 @@
+// Réinitialisation du CSS
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    background: none;
+    border: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+// Taille et style des h1 du site
+h1 {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+// Style des boutons du site
+button {
+    cursor: pointer;
+}
+
+// Réinitialisation des liens du site
+a {
+    color: inherit;
+}

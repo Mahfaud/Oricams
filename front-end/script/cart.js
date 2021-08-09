@@ -95,7 +95,7 @@ button.addEventListener("click", (e) => {
         dangerEmail.innerHTML = "Il y a un problème avec l'email indiquée."
         dangerEmail.classList.add("form-text" , "text-danger")
     }
-    if (confirmForm) {
+    if (confirmForm && productinStorage) {
         let order = {
             contact: {
                 firstName: form.firstName.value,
@@ -119,6 +119,7 @@ button.addEventListener("click", (e) => {
             localStorage.removeItem("products")
             data.totalPrice = cart
             localStorage.setItem("contact", JSON.stringify(data))
+            window.location.href = "confirmation.html"
         }))
     } else {
         e.preventDefault()
