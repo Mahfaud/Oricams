@@ -1,10 +1,12 @@
 let camsContainer = document.querySelector("#camsContainer")
-
+let main = document.querySelector(".main")
 // Création d'une fonction asynchrone "camera" qui fait un appel à l'API des caméras pour ensuite les afficher en HTML
 let camera = async () => {
     try {
         let response = await fetch("http://localhost:3000/api/cameras")
         if (response.ok) {
+            hideSpinner()
+            main.classList.remove("main")
             // Traitement de la donnée une fois reçu
             let data = await response.json()
             // Loop For qui fait affiche les données en HTML jusqu'a la fin des objets
@@ -42,10 +44,17 @@ let camera = async () => {
             console.log("Erreur" + response.status)
         }
     } catch {
+        hideSpinner()
         let errorTitle = camsContainer.appendChild(document.createElement("h1"))
             errorTitle.innerHTML = "Impossible d'afficher les caméras ! Le serveur ne répond pas ! Réésayez plus tard"
     }
 
+}
+
+
+function hideSpinner() {
+    let spinner = document.getElementById("spinner")
+    spinner.parentNode.removeChild(spinner)
 }
 
 camera()

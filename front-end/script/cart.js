@@ -32,6 +32,8 @@ if (productinStorage) {
         productTitle.innerHTML = productinStorage[i].name
         let productLens = productDiv.appendChild(document.createElement("p"))
         productLens.innerHTML = productinStorage[i].lens
+        let productQuantity = productDiv.appendChild(document.createElement("p"))
+        productQuantity.innerHTML = productinStorage[i].quantity
         let productPrice = productDiv.appendChild(document.createElement("p"))
         productPrice.innerHTML = productinStorage[i].price + "€"
         cart += Number(productinStorage[i].price)

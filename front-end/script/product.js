@@ -1,5 +1,6 @@
 var params = new URL(document.location).searchParams;
 var id = params.get("id");
+var addProductAlert = document.createElement("small")
 
 var product = document.getElementById("product")
 
@@ -60,6 +61,12 @@ let oneCamera = async () => {
             let button = document.querySelector(".btn")
             // Ajoute le produit dans le localStorage losqu'on clique sur le bouton
             button.addEventListener("click", () => {
+                let cardAddAlert = cardBody.appendChild(addProductAlert)
+                cardAddAlert.classList.add("text-success", "ml-3")
+                cardAddAlert.innerHTML = "Produit ajouté au panier"
+                setTimeout(() => {
+                    cardAddAlert.parentNode.removeChild(cardAddAlert)
+                }, 600)
                 let lens = document.querySelector(".form-control").value
                 let quantity = Number(document.querySelector(".productQuantity").value)
                 // Crée un objet product avec les choix de l'utilisateur
@@ -82,6 +89,7 @@ let oneCamera = async () => {
                         if (productInStorage[i].name == product.name && productInStorage[i].lens == product.lens) {
                             console.log("Same")
                             productInStorage[i].quantity += Number(product.quantity)
+                            productInStorage[i].price = productInStorage[i].quantity * product.price
                             localStorage.setItem("products", JSON.stringify(productInStorage))
                             sameProduct = true
                             break

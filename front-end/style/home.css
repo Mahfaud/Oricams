@@ -11,3 +11,38 @@
 a {
     color: inherit;
 }
+
+.main {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#presentation {
+    background-image: url("./bw_camera.jpg");
+    background-size: cover;
+    height: 350px;
+    width: 100%;
+    color: white;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#spinner {
+    border-bottom: 4px solid black;
+    border-left: 4px solid black;
+    border-right: 4px solid black;
+    height: 80px;
+    width: 80px;
+    border-radius: 60%;
+    animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
