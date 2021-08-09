@@ -47,6 +47,8 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  text-shadow: 2px 2px 4px black;
 }
 
 .main {

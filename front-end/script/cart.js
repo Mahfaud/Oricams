@@ -25,17 +25,19 @@ if (productinStorage) {
         }
     }
 
+    function addNewElementInCart(div, textInParagraph, newElement) {
+        let newDiv = div.appendChild(document.createElement(newElement))
+        newDiv.classList.add("productWidth")
+        newDiv.innerHTML = textInParagraph
+    }   
+
     for (let i = 0; i < productinStorage.length; i++) {
         let productDiv = cartDiv.appendChild(document.createElement("div"))
-        productDiv.classList.add("row", "justify-content-around", "cartLine")
-        let productTitle = productDiv.appendChild(document.createElement("h3"))
-        productTitle.innerHTML = productinStorage[i].name
-        let productLens = productDiv.appendChild(document.createElement("p"))
-        productLens.innerHTML = productinStorage[i].lens
-        let productQuantity = productDiv.appendChild(document.createElement("p"))
-        productQuantity.innerHTML = productinStorage[i].quantity
-        let productPrice = productDiv.appendChild(document.createElement("p"))
-        productPrice.innerHTML = productinStorage[i].price + "€"
+        productDiv.classList.add("row", "cartLine")
+        addNewElementInCart(productDiv, productinStorage[i].name, "h3")
+        addNewElementInCart(productDiv, productinStorage[i].lens, "p")
+        addNewElementInCart(productDiv, productinStorage[i].quantity, "p")
+        addNewElementInCart(productDiv, productinStorage[i].price + "€", "p")
         cart += Number(productinStorage[i].price)
     }
 }
