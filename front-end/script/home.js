@@ -41,7 +41,7 @@ let camera = async () => {
                 cardDescription.innerHTML = price
             } 
         } else {
-            console.log("Erreur" + response.status)
+            document.body.innerHTML = "Error " + response.status
         }
     } catch {
         hideSpinner()

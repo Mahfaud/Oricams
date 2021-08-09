@@ -119,7 +119,7 @@ let oneCamera = async () => {
                 }
             })
         } else {
-            document.body.innerHTML = response.status
+            document.body.innerHTML = "Error " + response.status
         }
     } catch {
         hideSpinner()
