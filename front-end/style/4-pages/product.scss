@@ -1,2 +1,11 @@
 @import '../2-basics/base';
 @import '../2-basics/productQuantity';
+@import '../2-basics/spinner';
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 73vh;
+    position: relative;
+}

@@ -1,8 +1,8 @@
 var params = new URL(document.location).searchParams;
 var id = params.get("id");
 var addProductAlert = document.createElement("small")
+var main = document.querySelector("main")
 
-var product = document.getElementById("product")
 
 // Création d'une fonction asynchrone "oneCamera" qui fait un appel à l'API pour afficher une seule caméra en HTML
 let oneCamera = async () => {
@@ -11,6 +11,14 @@ let oneCamera = async () => {
         if (response.ok) {
             // Traitement de la donnée une fois reçu
             let data = await response.json()
+
+            // On enleve la classe main pour remettre la taille auto au main
+            main.classList.remove("main")
+            hideSpinner()
+
+            // Création de la card du produit
+            let product = main.appendChild(document.createElement("div"))
+            product.classList.add("col", "m-4", "card")
 
             // Crée une nouvelle image qui sera l'enfant de la balise product et lui ajoute des classes Bootstrap et des attributs
             productImg = product.appendChild(document.createElement("img"))
@@ -114,8 +122,16 @@ let oneCamera = async () => {
             document.body.innerHTML = response.status
         }
     } catch {
-        document.body.innerHTML = "Le serveur ne répond pas"
+        hideSpinner()
+        let errorTitle = main.appendChild(document.createElement("h1"))
+        errorTitle.innerHTML = "Impossible d'afficher la caméra ! Le serveur ne répond pas ! Réésayez plus tard"
     }
 }
+
+function hideSpinner() {
+    let spinner = document.getElementById("spinner")
+    spinner.parentNode.removeChild(spinner)
+}
+
 
 oneCamera()

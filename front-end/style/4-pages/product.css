@@ -28,4 +28,30 @@ a {
   border: 1px solid #ced4da;
 }
 
+#spinner {
+  border-bottom: 4px solid black;
+  border-left: 4px solid black;
+  border-right: 4px solid black;
+  height: 80px;
+  width: 80px;
+  border-radius: 60%;
+  animation: rotate 2s infinite linear;
+  position: absolute;
+  top: 50%;
+  left: 43%;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 73vh;
+  position: relative;
+}
+
 /*# sourceMappingURL=product.css.map */

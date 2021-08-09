@@ -6,6 +6,9 @@
     width: 80px;
     border-radius: 60%;
     animation: rotate 2s infinite linear;
+    position: absolute;
+    top: 50%;
+    left: 43%;
 }
 
 @keyframes rotate {
