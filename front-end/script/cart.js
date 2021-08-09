@@ -114,6 +114,12 @@ button.addEventListener("click", (e) => {
         }
 
         fetch("http://localhost:3000/api/cameras/order", headers)
+        .then((response) => response.json()
+        .then((data) => {
+            localStorage.removeItem("products")
+            data.totalPrice = cart
+            localStorage.setItem("contact", JSON.stringify(data))
+        }))
     } else {
         e.preventDefault()
     }

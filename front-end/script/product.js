@@ -72,7 +72,7 @@ let oneCamera = async () => {
                 // Crée un objet product avec les choix de l'utilisateur
                 let product = {
                     name: data.name, 
-                    price : data.price / 10000,
+                    price : (data.price / 10000),
                     lens : lens,
                     _id : data._id,
                     quantity: quantity
@@ -89,7 +89,7 @@ let oneCamera = async () => {
                         if (productInStorage[i].name == product.name && productInStorage[i].lens == product.lens) {
                             console.log("Same")
                             productInStorage[i].quantity += Number(product.quantity)
-                            productInStorage[i].price = productInStorage[i].quantity * product.price
+                            productInStorage[i].price = Math.round((productInStorage[i].quantity * product.price)*100)/100
                             localStorage.setItem("products", JSON.stringify(productInStorage))
                             sameProduct = true
                             break
@@ -98,12 +98,14 @@ let oneCamera = async () => {
                     // Si le produit n'est pas le même après la boucle, ajoute le produit dans le localStorage
                     if (!sameProduct) {
                         console.log("Not same")
+                        product.price = Math.round((product.quantity * product.price)*100)/100
                         productInStorage.push(product)
                         localStorage.setItem("products", JSON.stringify(productInStorage))
                     }  
                 // Si productInStorage est égal à null alors on crée une array ou l'on va push le produit créé puis on renvoie le JSON dans le localStorage
                 } else {
                     productInStorage = []
+                    product.price = Math.round((product.quantity * product.price)*100)/100
                     productInStorage.push(product)
                     localStorage.setItem("products", JSON.stringify(productInStorage))
                 }
