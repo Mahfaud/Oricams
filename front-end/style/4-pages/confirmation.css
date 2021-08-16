@@ -22,11 +22,32 @@ a {
   color: inherit;
 }
 
+a:hover {
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+}
+
 .main {
   height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.confirmationOrder {
+  height: 500px;
+  background-color: #c9e1e9;
+  border: 3px solid #202629;
+  border-radius: 23px;
+  margin: 20px;
+  width: 600px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
 }
 
 /*# sourceMappingURL=confirmation.css.map */

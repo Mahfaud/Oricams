@@ -25,3 +25,9 @@ button {
 a {
     color: inherit;
 }
+
+a:hover {
+    text-decoration: none;
+    list-style: none;
+    color: inherit;
+}

@@ -2,3 +2,10 @@
 @import '../2-basics/spinner';
 @import '../3-layouts/presentation';
 @import '../3-layouts/main';
+
+
+@media screen and (min-width: 800px) {
+    #presentation {
+        font-size: 25px;
+    }
+  }

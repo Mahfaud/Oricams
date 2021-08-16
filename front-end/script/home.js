@@ -1,5 +1,12 @@
 let camsContainer = document.querySelector("#camsContainer")
 let main = document.querySelector(".main")
+
+// Fonction qui supprime le spinner
+function hideSpinner() {
+    let spinner = document.getElementById("spinner")
+    spinner.parentNode.removeChild(spinner)
+}
+
 // Création d'une fonction asynchrone "camera" qui fait un appel à l'API des caméras pour ensuite les afficher en HTML
 let camera = async () => {
     try {
@@ -51,10 +58,5 @@ let camera = async () => {
 
 }
 
-
-function hideSpinner() {
-    let spinner = document.getElementById("spinner")
-    spinner.parentNode.removeChild(spinner)
-}
 
 camera()

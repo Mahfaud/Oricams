@@ -6,3 +6,18 @@
     justify-content: center;
     align-items: center;
 }
+
+.confirmationOrder {
+    height: 500px;
+    background-color: rgb(201, 225, 233);
+    border: 3px solid rgb(32, 38, 41);
+    border-radius: 23px;
+    margin: 20px;
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+}

@@ -22,6 +22,12 @@ a {
   color: inherit;
 }
 
+a:hover {
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+}
+
 #spinner {
   border-bottom: 4px solid black;
   border-left: 4px solid black;
@@ -30,6 +36,9 @@ a {
   width: 80px;
   border-radius: 60%;
   animation: rotate 2s infinite linear;
+  position: absolute;
+  top: 50%;
+  left: 43%;
 }
 
 @keyframes rotate {
@@ -43,7 +52,7 @@ a {
   height: 350px;
   width: 100%;
   color: white;
-  font-size: 25px;
+  font-size: 19px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,6 +65,12 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (min-width: 800px) {
+  #presentation {
+    font-size: 25px;
+  }
 }
 
 /*# sourceMappingURL=home.css.map */
